@@ -47,4 +47,3 @@ dash
     .setCharacteristic(Characteristic.On, switchState);
 
  });
-//
