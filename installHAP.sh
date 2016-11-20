@@ -27,13 +27,6 @@ sudo git clone https://github.com/KhaosT/HAP-NodeJS.git
 cd HAP-NodeJS
 sudo npm install node-persist
 sudo npm rebuild
-sudo npm install debug
-sudo npm install mdns
-sudo npm install fast-srp-hap
-sudo npm install ed25519
-sudo npm install buffer-shims
-sudo npm install curve25519-n
-sudo npm install ip
-sudo npm install wiring-pi
-sudo npm install python-shell
+sudo npm install debug mdns fast-srp-hap ed25519 buffer-shims curve25519-n ip wiring-pi python-shell
+
 sudo node Core.js
