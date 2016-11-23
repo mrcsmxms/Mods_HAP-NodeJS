@@ -5,7 +5,7 @@ var Service = require('../').Service;
 var Characteristic = require('../').Characteristic;
 var uuid = require('../').uuid;
 
-// here's a fake temperature sensor device that we'll expose to HomeKit
+// here's a humidity sensor device that we'll expose to HomeKit
 var HUMID_SENSOR = {
   currentHumidity: 50,
   getHumidity: function() { 
@@ -13,6 +13,7 @@ var HUMID_SENSOR = {
     return HUMID_SENSOR.currentHumidity;
   },
   getNewHumidity: function() {
+// the file where the data from the actual sensor is exported to
 
     var humid = fs.readFileSync("/home/pi/HAP-NodeJS/humid");
     var raspiHumid = humid/1;
@@ -44,7 +45,7 @@ sensor
     callback(null, HUMID_SENSOR.getHumidity());
   });
 
-// randomize our temperature reading every 3 seconds
+// refresh our humidity reading every 3 seconds
 setInterval(function() {
   
   HUMID_SENSOR.getNewHumidity();
