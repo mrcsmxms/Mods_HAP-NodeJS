@@ -5,7 +5,7 @@ var Service = require('../').Service;
 var Characteristic = require('../').Characteristic;
 var uuid = require('../').uuid;
 
-// here's a fake temperature sensor device that we'll expose to HomeKit
+// here's a temperature sensor device that we'll expose to HomeKit
 var TEMP_SENSOR = {
   currentTemperature: 50,
   getTemperature: function() { 
