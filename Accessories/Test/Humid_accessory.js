@@ -6,17 +6,17 @@ var Characteristic = require('../').Characteristic;
 var uuid = require('../').uuid;
 
 // here's a fake temperature sensor device that we'll expose to HomeKit
-var FAKE_SENSOR = {
-  currentTemperature: 50,
-  getTemperature: function() { 
+var HUMID_SENSOR = {
+  currentHumidity: 50,
+  getHumidity: function() { 
     console.log("Getting the current humidity!");
-    return FAKE_SENSOR.currentTemperature;
+    return HUMID_SENSOR.currentHumidity;
   },
-  randomizeTemperature: function() {
+  getNewHumidity: function() {
 
-    var temp = fs.readFileSync("/home/pi/HAP-NodeJS/humid");
-    var raspiTemp = temp/1;
-    FAKE_SENSOR.currentTemperature = raspiTemp;
+    var humid = fs.readFileSync("/home/pi/HAP-NodeJS/humid");
+    var raspiHumid = humid/1;
+    HUMID_SENSOR.currentHumidity = raspiHumid;
  }
 }
 
@@ -41,17 +41,17 @@ sensor
   .on('get', function(callback) {
     
     // return our current value
-    callback(null, FAKE_SENSOR.getTemperature());
+    callback(null, HUMID_SENSOR.getHumidity());
   });
 
 // randomize our temperature reading every 3 seconds
 setInterval(function() {
   
-  FAKE_SENSOR.randomizeTemperature();
+  HUMID_SENSOR.getNewHumidity();
   
   // update the characteristic value so interested iOS devices can get notified
   sensor
     .getService(Service.HumiditySensor)
-    .setCharacteristic(Characteristic.CurrentRelativeHumidity, FAKE_SENSOR.currentTemperature);
+    .setCharacteristic(Characteristic.CurrentRelativeHumidity, HUMID_SENSOR.currentHumidity);
   
 }, 3000);
