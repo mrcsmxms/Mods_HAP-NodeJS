@@ -31,7 +31,7 @@ var sensorUUID = uuid.generate('hap-nodejs:accessories:humid-sens');
 var sensor = exports.accessory = new Accessory('Humid Sens', sensorUUID);
 
 // Add properties for publishing (in case we're using Core.js and not BridgedCore.js)
-sensor.username = "F2:5D:3A:AE:55:FC";
+sensor.username = "F2:6D:3A:AE:55:FC";
 sensor.pincode = "031-45-154";
 
 // Add the actual TemperatureSensor Service.
